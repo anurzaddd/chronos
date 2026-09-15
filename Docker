@@ -1,0 +1,2 @@
+docker build -t chronos .
+docker run -it chronos
