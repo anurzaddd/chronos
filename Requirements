@@ -1,0 +1,7 @@
+Rust 1.75+
+
+LLVM 16
+
+Z3 4.12+
+
+(Optional) CUDA 12+
