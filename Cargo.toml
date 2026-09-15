@@ -1,1 +1,55 @@
+[package]
+name = "chronos"
+version = "0.1.0"
+edition = "2021"
+authors = ["Amir Hossein Nourzadeh <amirhosseinnourzadeh30@gmail.com>"]
+description = "Self-Evolving Neural Compiler with Formal Verification"
+license = "MIT"
+repository = "https://github.com/anurzaddd/chronos"
 
+[workspace]
+members = [
+    "crates/chronos-core",
+    "crates/chronos-backend-x86",
+    "crates/chronos-backend-arm",
+    "crates/chronos-backend-wasm",
+    "crates/chronos-runtime",
+    "crates/chronos-cli",
+]
+
+[workspace.dependencies]
+# Core dependencies
+tokio = { version = "1.35", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# ML dependencies
+tch = "0.15"              # PyTorch bindings for Rust
+ndarray = "0.15"          # N-dimensional arrays
+ort = "2.0.0-rc.1"        # ONNX Runtime
+
+# Formal verification
+z3 = "0.12"               # Z3 SMT solver bindings
+
+# Compiler infrastructure
+inkwell = { version = "0.4", features = ["llvm16-0"] }  # LLVM bindings
+cranelift = "0.100"       # Alternative code generator
+
+# Parsing
+nom = "7.1"               # Parser combinators
+pest = "2.7"              # PEG parser
+
+# Async & Networking
+reqwest = { version = "0.11", features = ["json"] }
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# CLI
+clap = { version = "4.4", features = ["derive"] }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
