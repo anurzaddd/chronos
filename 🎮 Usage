@@ -1,0 +1,16 @@
+Compile from Description
+bash
+chronos compile \
+  --description "Implement a red-black tree" \
+  --target x86_64 \
+  --optimization 3 \
+  --output tree.s
+Interactive REPL
+bash
+$ chronos repl
+chronos> Write a function that reverses a string
+chronos> Implement binary search
+chronos> Generate a neural network forward pass
+Compile from File
+bash
+chronos compile-file --input examples/sort.txt --output sort.wasm
